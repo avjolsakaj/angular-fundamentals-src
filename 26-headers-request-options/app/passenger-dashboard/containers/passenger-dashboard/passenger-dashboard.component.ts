@@ -1,25 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import { PassengerDashboardService } from '../../passenger-dashboard.service';
+import { PassengerDashboardService } from "../../passenger-dashboard.service";
 
-import { Passenger } from '../../models/passenger.interface';
+import { Passenger } from "../../models/passenger.interface";
 
 @Component({
-  selector: 'passenger-dashboard',
-  styleUrls: ['passenger-dashboard.component.scss'],
+  selector: "passenger-dashboard",
+  styleUrls: ["passenger-dashboard.component.scss"],
   template: `
     <div>
-      <passenger-count
-        [items]="passengers">
-      </passenger-count>
-      <div *ngFor="let passenger of passengers;">
+      <passenger-count [items]="passengers"> </passenger-count>
+      <div *ngFor="let passenger of passengers">
         {{ passenger.fullname }}
       </div>
       <passenger-detail
-        *ngFor="let passenger of passengers;"
+        *ngFor="let passenger of passengers"
         [detail]="passenger"
         (edit)="handleEdit($event)"
-        (remove)="handleRemove($event)">
+        (remove)="handleRemove($event)"
+      >
       </passenger-detail>
     </div>
   `
@@ -28,9 +27,9 @@ export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];
   constructor(private passengerService: PassengerDashboardService) {}
   ngOnInit() {
-     this.passengerService
+    this.passengerService
       .getPassengers()
-      .subscribe((data: Passenger[]) => this.passengers = data);
+      .subscribe((data: Passenger[]) => (this.passengers = data));
   }
   handleEdit(event: Passenger) {
     this.passengerService
