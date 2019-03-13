@@ -4,7 +4,6 @@ import {
   Output,
   OnChanges,
   OnInit,
-  SimpleChanges,
   EventEmitter
 } from "@angular/core";
 import { Passenger } from "../../models/passenger.interface";
@@ -34,7 +33,6 @@ import { Passenger } from "../../models/passenger.interface";
             : "No checked in"
         }}
       </div>
-      <div class="children">Children: {{ detail.children?.length || 0 }}</div>
       <button (click)="toggleEdit()">
         {{ editing ? "Done" : "Edit" }}
       </button>
